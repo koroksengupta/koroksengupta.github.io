@@ -32,3 +32,12 @@
 		});
 
 })(jQuery);
+$( document ).ready(function() {
+	$( "ul.timeline" ).each(function() {
+		TotalHeight = 0;
+		$(this).find(".timeline__item").each(function() {
+			TotalHeight += $(this).height() + 28;
+		});
+		$(this).find(".timeline__item .before").height(TotalHeight - $(this).find(".timeline__item:last-child").height());
+	});
+});
