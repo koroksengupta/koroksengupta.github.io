@@ -57,11 +57,23 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script async>
+    <script>
         $(document).ready(function () {
             $("div[data-includeHTML]").each(function () {
                 $(this).load($(this).attr("data-includeHTML"));
             });
+            $("ul.timeline").each(function () {
+                TotalHeight = 0;
+                $(this).find(".timeline__item").each(function () {
+                    TotalHeight += $(this).height() + 28;
+                });
+                $(this).find(".timeline__item .before").height(TotalHeight - $(this).find(
+                    ".timeline__item:last-child").height());
+            });
+        });
+    </script>
+    <script defer>
+        $(document).ready(function () {
             $("ul.timeline").each(function () {
                 TotalHeight = 0;
                 $(this).find(".timeline__item").each(function () {
