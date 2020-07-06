@@ -7,6 +7,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script defer>
+        $(document).ready(function () {
+            $("ul.timeline").each(function () {
+                TotalHeight = 0;
+                $(this).find(".timeline__item").each(function () {
+                    TotalHeight += $(this).height() + 28;
+                });
+                $(this).find(".timeline__item .before").height(TotalHeight - $(this).find(
+                    ".timeline__item:last-child").height());
+            });
+        });
+    </script>
 
 </head>
 
@@ -72,19 +84,6 @@
             });
         });
     </script>
-    <script defer>
-        $(document).ready(function () {
-            $("ul.timeline").each(function () {
-                TotalHeight = 0;
-                $(this).find(".timeline__item").each(function () {
-                    TotalHeight += $(this).height() + 28;
-                });
-                $(this).find(".timeline__item .before").height(TotalHeight - $(this).find(
-                    ".timeline__item:last-child").height());
-            });
-        });
-    </script>
-
 </body>
 
 </html>
