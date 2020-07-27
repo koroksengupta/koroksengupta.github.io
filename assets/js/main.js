@@ -39,6 +39,6 @@ $( document ).ready(function() {
 			TotalHeight += $(this).height() + 28;
 		});
 		$(this).find(".timeline__item .before").height(TotalHeight - $(this).find(".timeline__item:last-child").height());
-		$(this).find(".timeline__step__marker:last-child").css("background-color","#F38630");
+		$(this).find(".timeline__step__marker").last().css("background-color","#F38630");
 	});
 });
