@@ -2638,6 +2638,7 @@ input, select, textarea {
 	padding: 15px 0;
 	width: 25%;
 	text-align: left !important;
+	font-size: 90%;
   }
   .timeline_hr__step {
 	/* padding-right: 62px; */
@@ -2682,9 +2683,12 @@ input, select, textarea {
   }
   .timeline_hr__points {
 	padding: 0;
-	list-style: none;
-	font-size: 24px;
-	color: #77777D;
+    list-style: none;
+    font-size: 18px;
+    color: #77777D;
+    text-align: initial;
+    margin-top: 0px;
+    margin-bottom: 5px;
   }
   .timeline_hr__points > * {
 	/* padding: 0 0 12px 0; */
