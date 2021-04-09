@@ -6,28 +6,37 @@
     <title>Korok Sengupta</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/portfolio.css" />
     <link rel="shortcut icon" type="image/png" href="./assets/css/images/bangla_k_png.png" />
 
 </head>
 
 
 <body class="is-preload">
-
-    <!-- Nav -->
-    <nav id="nav">
-        <ul class="container">
-            <li><a href="./index.html">Home</a></li>
-        </ul>
-    </nav>
-
     <!-- Home -->
-    </footer>
+    <div class='container'>
+        <!--   <div class="intro">hello</div> -->
+        <div class='slides'>
+            <div class="slide">
+                <img class="slider-image" src="./assets/portfolio/portfolio01/1Careons_ Intro.png">
+            </div>
+            <div class="slide">
+                <img class="slider-image" src="./assets/portfolio/portfolio01/2Careons_ Research Methods.png">
+            </div>
+            <div class="slide">
+                <img class="slider-image" src="./assets/portfolio/portfolio01/3Careons_ Index.png">
+            </div>
+            <div class="slide">
+                <img class="slider-image" src="./assets/portfolio/portfolio01/4Careons_ Incident II.png">
+            </div>
+        </div>
     </div>
-    </article>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/slick.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
@@ -35,9 +44,58 @@
     <script src="assets/js/main.js"></script>
     <script>
         $(document).ready(function () {
-            $("div[data-includeHTML]").each(function () {
-                $(this).load($(this).attr("data-includeHTML"));
+            function debounce(func, wait, immediate) {
+                var timeout;
+                return function () {
+                    var context = this,
+                        args = arguments;
+                    var later = function () {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    var callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
+                };
+            };
+
+            function slick_handle_wheel_event(e, slick_instance, slick_is_animating) {
+                if (!slick_is_animating) {
+                    var direction =
+                        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+
+                    if (direction > 0) {
+                        slick_instance.slick("slickNext");
+                    } else {
+                        slick_instance.slick("slickPrev");
+                    }
+                }
+            }
+            var slick_handle_wheel_event_debounced = debounce(
+                slick_handle_wheel_event, 100, true
+            );
+            const slick_2 = $(".slides");
+            slick_2.slick({
+                dots: true,
+                vertical: true,
+                arrows: false,
+                infinite: false
             });
+            var slick_2_is_animating = false;
+
+            slick_2.on("afterChange", function (index) {
+                slick_2_is_animating = false;
+            });
+
+            slick_2.on("beforeChange", function (index) {
+                slick_2_is_animating = true;
+            });
+
+            slick_2.on("wheel", function (e) {
+                slick_handle_wheel_event_debounced(e.originalEvent, slick_2, slick_2_is_animating);
+            });
+
         });
     </script>
 

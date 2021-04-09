@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.intro {
+  height: 100vh;
+  width: 100%;
+  background: #999;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100vh;
+  color: #333;
+}
+
+.slick-track,
+.slick-list {
+  height: 100vh;
+}
+
+.slick-dotted.slick-slider {
+  margin: 0;
+}
+
+.slides {
+  width: 100%;
+  height: 100vh;
+}
+.slides .slide {
+  color: #419be0;
+  background: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  text-align: left;
+}
+.slick-dots li {
+  display: block;
+}
+
+.slider-image {
+  height: 100%;
+  widows: 100%;
+}
