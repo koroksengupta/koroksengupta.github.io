@@ -10,7 +10,23 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css" />
     <link rel="shortcut icon" type="image/png" href="./assets/css/images/bangla_k_png.png" />
-
+<!--     Newly added -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+    </style>
+<!--     end of newly added -->
 </head>
 
 
@@ -29,8 +45,11 @@
     <!-- Nav End-->
     <!--Cover 95% device height-->
     <article class="">
-        <div class="container">
+<!--         <div class="container">
             <img style="width: auto; height: auto; object-fit: cover" src="./images/INfo.png" />
+        </div> -->
+        <div class="imgbox">
+            <img class="center-fit" src="./images/INfo.png">
         </div>
     </article>
     <!-- Cover End-->
