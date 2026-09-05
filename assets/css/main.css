@@ -2463,6 +2463,7 @@ input, select, textarea {
 	/* Timeline
  */
 .timeline {
+  position: relative;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -2471,21 +2472,16 @@ input, select, textarea {
   margin: 0;
   list-style: none;
 }
-/* .timeline::before {
+/* Single connecting line for the whole list. It lives here, as a direct
+   child of .timeline, instead of inside a .timeline__item, so copying or
+   reordering entries (adding a new job, say) can never duplicate it or
+   leave it orphaned - see main.js for the height it's given. */
+.timeline-line {
   position: absolute;
   top: 0;
-  height: 100%;
+  left: 0;
   padding-right: 10px;
   border-right: 5px solid #F2F2F2;
-  content: "";
-} */
-.timeline__item .before{
-  position: absolute;
-  top: 62;
-  /* height: 265px; */
-  padding-right: 10px;
-  border-right: 5px solid #F2F2F2;
-  content: "";
 }
 .timeline__item {
   display: -webkit-flex;
@@ -2558,7 +2554,7 @@ input, select, textarea {
   .timeline {
     padding: 0 35.42857px;
   }
-  .timeline::before {
+  .timeline-line {
     padding-right: 6.28571px;
   }
   .timeline__item {
@@ -2633,6 +2629,7 @@ input, select, textarea {
 	/* Timeline Horizontal */
  
  .timeline_hr {
+	position: relative;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-direction: row;
@@ -2641,22 +2638,8 @@ input, select, textarea {
 	margin: 0;
 	list-style: none;
   }
-  /* .timeline::before {
-	position: absolute;
-	top: 0;
-	height: 100%;
-	padding-right: 10px;
-	border-right: 5px solid #F2F2F2;
-	content: "";
-  } */
-  .timeline_hr__item .before{
-	position: absolute;
-	top: 62;
-	/* height: 265px; */
-	padding-right: 10px;
-	border-right: 5px solid #F2F2F2;
-	content: "";
-  }
+  /* Single connecting line for the whole list - see .timeline-line above
+     for why it isn't nested inside a repeatable .timeline_hr__item. */
   .timeline_hr__item {
 	display: -webkit-flex;
 	display: flex;
