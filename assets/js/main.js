@@ -34,11 +34,11 @@
 })(jQuery);
 $( document ).ready(function() {
 	$( "ul.timeline" ).each(function() {
-		TotalHeight = 0;
+		var totalHeight = 0;
 		$(this).find(".timeline__item").each(function() {
-			TotalHeight += $(this).height() + 28;
+			totalHeight += $(this).height() + 28;
 		});
-		$(this).find(".timeline__item .before").height(TotalHeight - $(this).find(".timeline__item:last-child").height());
+		$(this).find(".timeline__item .before").height(totalHeight - $(this).find(".timeline__item:last-child").height());
 		$(this).find(".timeline__step__marker").first().css("background-color","#F38630");
 	});
 });
