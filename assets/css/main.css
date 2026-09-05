@@ -2395,11 +2395,25 @@ input, select, textarea {
 				line-height: 44px;
 			}
 
+				#nav ul {
+					display: -webkit-flex;
+					display: flex;
+					justify-content: flex-start;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				#nav li {
+					-webkit-flex: 0 0 auto;
+					flex: 0 0 auto;
+				}
+
 				#nav a {
 					padding: 0 0.75em;
 					height: inherit;
 					line-height: inherit;
 					border-radius: 0;
+					white-space: nowrap;
 				}
 
 					#nav a:hover {
@@ -2574,6 +2588,19 @@ input, select, textarea {
   .timeline__points > * {
     padding-bottom: 6.85714px;
   }
+  .timeline__item {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .timeline__time,
+  .timeline__content {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 40px;
+  }
+  .timeline__time.text-right {
+    text-align: left !important;
+  }
 }
 .card {
   background-color: white;
@@ -2696,6 +2723,22 @@ input, select, textarea {
   .timeline_hr__content{
 	  width: 50%;
   }
+
+  @media (max-width: 768px) {
+    .timeline_hr {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      padding: 0 35.42857px;
+    }
+    .timeline_hr__item {
+      width: 100%;
+    }
+    .timeline_hr__time,
+    .timeline_hr__content {
+      width: 100%;
+    }
+  }
+
   section.section {
 	background: transparent;
   }
