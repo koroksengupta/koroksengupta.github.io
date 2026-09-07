@@ -32,35 +32,9 @@
 		});
 
 })(jQuery);
-function layoutTimelines() {
-	$( "ul.timeline" ).each(function() {
-		var $items = $(this).children(".timeline__item");
-		var totalHeight = 0;
-		$items.each(function() {
-			totalHeight += $(this).height() + 28;
-		});
-		$(this).children(".timeline-line").height(totalHeight - $items.last().height());
-		$(this).find(".timeline__step__marker").first().css("background-color","#F38630");
-	});
-}
-
-$( document ).ready(function() {
-	// Run once immediately so the page isn't blank while the webfont loads...
-	layoutTimelines();
-
-	// ...then again once it has, since main.css pulls Montserrat from Google
-	// Fonts asynchronously. It normally finishes after this ready handler,
-	// so item heights - and therefore the line length above - change out
-	// from under the first calculation if nothing redoes it.
-	if ( document.fonts && document.fonts.ready ) {
-		document.fonts.ready.then(layoutTimelines);
-	}
-
-	// Also on resize/orientation change, since item heights depend on
-	// viewport width (text reflows at different widths).
-	var resizeTimer;
-	$( window ).on('resize', function() {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(layoutTimelines, 150);
-	});
-});
+/* The timeline connector line and the "current entry" marker highlight
+   used to be computed here in JS (a pixel height recalculated on ready,
+   on webfont load, and on resize). That kept going stale in ways that
+   were awkward to fully guarantee against, so it's now plain CSS -
+   see .timeline-line in main.css - which can't go stale since it isn't
+   a cached pixel value to begin with. */
