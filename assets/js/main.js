@@ -32,7 +32,7 @@
 		});
 
 })(jQuery);
-$( document ).ready(function() {
+function layoutTimelines() {
 	$( "ul.timeline" ).each(function() {
 		var $items = $(this).children(".timeline__item");
 		var totalHeight = 0;
@@ -41,5 +41,26 @@ $( document ).ready(function() {
 		});
 		$(this).children(".timeline-line").height(totalHeight - $items.last().height());
 		$(this).find(".timeline__step__marker").first().css("background-color","#F38630");
+	});
+}
+
+$( document ).ready(function() {
+	// Run once immediately so the page isn't blank while the webfont loads...
+	layoutTimelines();
+
+	// ...then again once it has, since main.css pulls Montserrat from Google
+	// Fonts asynchronously. It normally finishes after this ready handler,
+	// so item heights - and therefore the line length above - change out
+	// from under the first calculation if nothing redoes it.
+	if ( document.fonts && document.fonts.ready ) {
+		document.fonts.ready.then(layoutTimelines);
+	}
+
+	// Also on resize/orientation change, since item heights depend on
+	// viewport width (text reflows at different widths).
+	var resizeTimer;
+	$( window ).on('resize', function() {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(layoutTimelines, 150);
 	});
 });
