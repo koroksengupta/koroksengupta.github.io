@@ -77,7 +77,7 @@ There is no `package.json`, no bundler, and no linter configured for this repo. 
     ├── webfonts/                  # Font Awesome font files
     │
     └── portfolio/
-        ├── Curriculum_Vitae.pdf          # The CV linked from both pages
+        ├── Korok_Sengupta_CV.pdf         # The CV linked from both pages
         ├── portfolio01/                  # Careons Healthcare case study images + merged PDF
         ├── porfolio2/                    # DreamFolks case study images
         └── portfolio03/                  # GazeTheWeb / keyboard experiment case study images
@@ -156,11 +156,13 @@ To add a new case study, drop its images in a new folder under `assets/portfolio
 
 ### CV / résumé PDF
 
-Both pages link to `assets/portfolio/Curriculum_Vitae.pdf`. To update the CV, **replace that file in place** (keep the exact filename) — every link on the site already points to it, so no HTML changes are needed. If you ever do need to rename it, update all references:
+Both pages link to `assets/portfolio/Korok_Sengupta_CV.pdf`. To update the CV, **replace that file in place** (keep the exact filename) — every link on the site already points to it, so no HTML changes are needed. If you ever do need to rename it, update all references:
 
 ```bash
-grep -rn "Curriculum_Vitae.pdf" index.html portfolio.html
+grep -rn "Korok_Sengupta_CV.pdf" index.html portfolio.html
 ```
+
+There should only ever be **one** CV file in `assets/portfolio/` — a duplicate (`Curriculum_Vitae.pdf`, byte-identical, left over from an earlier update) was removed rather than keeping both around with links split across them.
 
 ## The timeline component
 
